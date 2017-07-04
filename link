@@ -1,1 +1,56 @@
 https://forums.macrumors.com/threads/2011-intel-hd-3000-macbook-pro-1024mb-vram-kext-work.1977308/
+
+https://forums.macrumors.com/threads/how-to-increase-vram-for-hd3000-graphics.1766384/
+
+From 256MB to 384MB
+Quote
+cd /S*/L*/Ext*/AppleIntelSNBGraphicsFB.kext/C*/M*
+
+sudo cp AppleIntelSNBGraphicsFB AppleIntelSNBGraphicsFB.backup
+
+sudo perl -pi -e 's|\xC7\x45\xBC\x00\x00\x00\x12|\xc7\x45\xBC\x00\x00\x00\x18|g' AppleIntelSNBGraphicsFB
+
+sudo touch /S*/L*/Extensions
+From 256MB to 512MB
+Quote
+cd /S*/L*/Ext*/AppleIntelSNBGraphicsFB.kext/C*/M*
+
+sudo cp AppleIntelSNBGraphicsFB AppleIntelSNBGraphicsFB.backup
+
+sudo perl -pi -e 's|\xC7\x45\xBC\x00\x00\x00\x12|\xc7\x45\xBC\x00\x00\x00\x20|g' AppleIntelSNBGraphicsFB
+
+sudo touch /S*/L*/Extensions
+From 384MB to 1GB
+Quote
+cd /S*/L*/Ext*/AppleIntelSNBGraphicsFB.kext/C*/M*
+
+sudo cp AppleIntelSNBGraphicsFB AppleIntelSNBGraphicsFB.backup
+
+sudo perl -pi -e 's|\xC7\x45\xBC\x00\x00\x00\x18|\xc7\x45\xBC\x00\x00\x00\x40|g' AppleIntelSNBGraphicsFB
+
+sudo touch /S*/L*/Extensions
+From 384MB to 512MB
+Quote
+cd /S*/L*/Ext*/AppleIntelSNBGraphicsFB.kext/C*/M*
+
+sudo cp AppleIntelSNBGraphicsFB AppleIntelSNBGraphicsFB.backup
+
+sudo perl -pi -e 's|\xC7\x45\xBC\x00\x00\x00\x18|\xc7\x45\xBC\x00\x00\x00\x20|g' AppleIntelSNBGraphicsFB
+
+sudo touch /S*/L*/Extensions
+From 512MB to 1GB
+Quote
+cd /S*/L*/Ext*/AppleIntelSNBGraphicsFB.kext/C*/M*
+
+sudo cp AppleIntelSNBGraphicsFB AppleIntelSNBGraphicsFB.backup
+
+sudo perl -pi -e 's|\xC7\x45\xBC\x00\x00\x00\x20|\xc7\x45\xBC\x00\x00\x00\x40|g' AppleIntelSNBGraphicsFB
+
+sudo touch /S*/L*/Extensions
+(Thanks to user Grama for the following tutorial!)
+When done with everything above, edit the Info.plist at AppleIntelHD3000Graphics.kext/C*
+Have to add after VRAMOverrride the VRAMSize key, it will be like this:
+<key>VRAMOverride</key>
+<integer>0</integer>
+<key>VRAMSize</key>
+<integer>1024</integer>
